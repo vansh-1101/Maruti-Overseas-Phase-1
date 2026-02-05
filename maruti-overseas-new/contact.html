@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact Maruti Overseas Consultancy - Get in touch for visa consultancy services. Visit our offices in Visnagar and Ahmedabad.">
+    <title>Contact Us - Maruti Overseas Consultancy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logos/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .contact-hero {
+            background: var(--gradient-primary);
+            color: var(--color-white);
+            padding: var(--space-4xl) 0 var(--space-3xl);
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+
+        .contact-info-card {
+            background: var(--color-white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            font-size: var(--font-size-2xl);
+            color: var(--color-white);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--color-gray);
+            border-radius: var(--radius-md);
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-base);
+            transition: border-color var(--transition-base);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .office-card {
+            background: var(--color-white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--space-xl);
+        }
+
+        .office-card h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .office-details p {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            color: var(--color-dark-gray);
+        }
+
+        .office-details i {
+            color: var(--color-secondary);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logos/Maruti_logo_new.jpeg" alt="Maruti Overseas Consultancy">
+                    </a>
+                </div>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="countries.html" class="nav-link">Countries</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+                    <li><a href="contact.html" class="btn btn-primary btn-small">Get Started</a></li>
+                </ul>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="animate-fade-in-up">Contact Us</h1>
+            <p class="animate-fade-in-up" style="font-size: var(--font-size-lg); margin-top: var(--space-md);">Get in
+                touch with us for expert visa consultancy services</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-card scroll-reveal">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>+91 XXXXX XXXXX</p>
+                    <p>+91 XXXXX XXXXX</p>
+                </div>
+
+                <div class="contact-info-card scroll-reveal">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>info@marutioverseas.com</p>
+                    <p>contact@marutioverseas.com</p>
+                </div>
+
+                <div class="contact-info-card scroll-reveal">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Saturday</p>
+                    <p>9:00 AM - 7:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Office Locations -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+                <!-- Contact Form -->
+                <div class="scroll-reveal">
+                    <div class="card">
+                        <h2 class="card-title">Send Us a Message</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">Service Interested In</label>
+                                <select id="service" name="service" class="form-control">
+                                    <option value="">Select a service</option>
+                                    <option value="student-visa">Student Visa</option>
+                                    <option value="visitor-visa">Visitor Visa</option>
+                                    <option value="passport">Passport Services</option>
+                                    <option value="air-tickets">Air Tickets</option>
+                                    <option value="package-tours">Package Tours</option>
+                                    <option value="money-transfer">Money Transfer</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Office Locations -->
+                <div class="scroll-reveal">
+                    <div class="office-card">
+                        <h3><i class="fas fa-building"></i> Head Office - Visnagar</h3>
+                        <div class="office-details">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Maruti Overseas Consultancy<br>
+                                    Visnagar, Gujarat, India</span>
+                            </p>
+                            <p>
+                                <i class="fas fa-phone"></i>
+                                <span>+91 XXXXX XXXXX</span>
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <span>visnagar@marutioverseas.com</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="office-card">
+                        <h3><i class="fas fa-building"></i> Branch Office - Ahmedabad</h3>
+                        <div class="office-details">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Maruti Overseas Consultancy<br>
+                                    Ahmedabad, Gujarat, India</span>
+                            </p>
+                            <p>
+                                <i class="fas fa-phone"></i>
+                                <span>+91 XXXXX XXXXX</span>
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <span>ahmedabad@marutioverseas.com</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Follow Us</h3>
+                        <div class="social-links" style="justify-content: flex-start;">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Maruti Overseas Consultancy</h3>
+                    <p>Your trusted partner for visa consultancy and travel services since 2004. We are committed to
+                        excellence, integrity, and helping you achieve your global aspirations.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="countries.html">Countries</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html#student-visa">Student Visa</a></li>
+                        <li><a href="services.html#visitor-visa">Visitor Visa</a></li>
+                        <li><a href="services.html#passport">Passport Services</a></li>
+                        <li><a href="services.html#air-tickets">Air Tickets</a></li>
+                        <li><a href="services.html#package-tours">Package Tours</a></li>
+                        <li><a href="services.html#money-transfer">Money Transfer</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Visnagar, Gujarat (Head Office)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat (Branch)</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXXX XXXXX</p>
+                    <p><i class="fas fa-envelope"></i> info@marutioverseas.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Maruti Overseas Consultancy. All rights reserved. | Designed with ❤️ for your success</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

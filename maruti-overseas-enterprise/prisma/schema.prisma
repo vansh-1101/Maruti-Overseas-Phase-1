@@ -1,0 +1,412 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USER MANAGEMENT
+// ============================================
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  phone         String?
+  name          String
+  role          Role     @default(STUDENT)
+  password      String
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  profile       StudentProfile?
+  applications  Application[]
+  leads         Lead[]
+  documents     Document[]
+}
+
+enum Role {
+  STUDENT
+  COUNSELOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+// ============================================
+// STUDENT PROFILE
+// ============================================
+
+model StudentProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Academic
+  highestEducation  String?
+  cgpa              Float?
+  graduationYear    Int?
+  fieldOfStudy      String?
+  
+  // Test Scores
+  ieltsScore        Float?
+  toeflScore        Int?
+  pteScore          Int?
+  greScore          Int?
+  gmatScore         Int?
+  
+  // Preferences
+  preferredCountries String[]
+  preferredCourses   String[]
+  budget            Int?
+  intakePreference  String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// ============================================
+// LEAD MANAGEMENT
+// ============================================
+
+model Lead {
+  id              String      @id @default(cuid())
+  userId          String?
+  user            User?       @relation(fields: [userId], references: [id])
+  
+  name            String
+  email           String
+  phone           String
+  country         String?
+  course          String?
+  intake          String?
+  
+  // Lead Scoring
+  score           Int         @default(0)
+  status          LeadStatus  @default(NEW)
+  source          String?     // UTM tracking
+  
+  // Assignment
+  counselorId     String?
+  assignedAt      DateTime?
+  
+  // Tracking
+  tags            String[]
+  notes           Note[]
+  
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  ENROLLED
+  LOST
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  content   String
+  createdBy String
+  createdAt DateTime @default(now())
+}
+
+// ============================================
+// UNIVERSITY DATABASE
+// ============================================
+
+model University {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  country         String
+  city            String
+  ranking         Int?
+  logo            String?
+  website         String?
+  
+  // Details
+  description     String?  @db.Text
+  tuitionFeeMin   Int?
+  tuitionFeeMax   Int?
+  acceptanceRate  Float?
+  
+  courses         Course[]
+  applications    Application[]
+  
+  isPartner       Boolean  @default(false)
+  featured        Boolean  @default(false)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([country])
+  @@index([featured])
+}
+
+// ============================================
+// COURSE DATABASE
+// ============================================
+
+model Course {
+  id              String      @id @default(cuid())
+  universityId    String
+  university      University  @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  
+  name            String
+  slug            String
+  level           CourseLevel
+  duration        String
+  tuitionFee      Int?
+  category        String
+  
+  // Requirements
+  minCGPA         Float?
+  minIELTS        Float?
+  minTOEFL        Int?
+  
+  // Details
+  description     String?     @db.Text
+  curriculum      String?     @db.Text
+  careerProspects String?     @db.Text
+  
+  intakes         String[]    // ["Sep 2024", "Jan 2025"]
+  
+  applications    Application[]
+  
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  @@index([category])
+  @@index([level])
+  @@unique([universityId, slug])
+}
+
+enum CourseLevel {
+  BACHELORS
+  MASTERS
+  PHD
+  DIPLOMA
+  CERTIFICATE
+}
+
+// ============================================
+// APPLICATION TRACKING
+// ============================================
+
+model Application {
+  id              String            @id @default(cuid())
+  userId          String
+  user            User              @relation(fields: [userId], references: [id])
+  universityId    String
+  university      University        @relation(fields: [universityId], references: [id])
+  courseId        String
+  course          Course            @relation(fields: [courseId], references: [id])
+  
+  status          ApplicationStatus @default(DRAFT)
+  intake          String
+  
+  // Documents
+  documents       Document[]
+  
+  // Timeline
+  appliedAt       DateTime?
+  decisionAt      DateTime?
+  
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  
+  @@index([userId])
+  @@index([status])
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  WAITLISTED
+}
+
+// ============================================
+// SCHOLARSHIP DATABASE
+// ============================================
+
+model Scholarship {
+  id              String   @id @default(cuid())
+  name            String
+  provider        String
+  country         String
+  amount          Int
+  deadline        DateTime?
+  
+  eligibility     String?  @db.Text
+  description     String?  @db.Text
+  applicationUrl  String?
+  
+  featured        Boolean  @default(false)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([country])
+  @@index([featured])
+}
+
+// ============================================
+// DOCUMENT MANAGEMENT
+// ============================================
+
+model Document {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  
+  name            String
+  type            DocumentType
+  url             String
+  size            Int
+  
+  applicationId   String?
+  application     Application? @relation(fields: [applicationId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([userId])
+}
+
+enum DocumentType {
+  PASSPORT
+  TRANSCRIPT
+  SOP
+  LOR
+  RESUME
+  FINANCIAL
+  TEST_SCORE
+  OTHER
+}
+
+// ============================================
+// BLOG & CONTENT
+// ============================================
+
+model BlogPost {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  content         String   @db.Text
+  excerpt         String?
+  featuredImage   String?
+  
+  category        String
+  tags            String[]
+  
+  authorId        String
+  
+  published       Boolean  @default(false)
+  publishedAt     DateTime?
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  views           Int      @default(0)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([published])
+  @@index([category])
+}
+
+// ============================================
+// WEBINARS & EVENTS
+// ============================================
+
+model Webinar {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?  @db.Text
+  speaker         String
+  date            DateTime
+  duration        Int      // minutes
+  
+  registrationUrl String?
+  meetingLink     String?
+  
+  maxAttendees    Int?
+  registrations   WebinarRegistration[]
+  
+  featured        Boolean  @default(false)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([date])
+}
+
+model WebinarRegistration {
+  id              String   @id @default(cuid())
+  webinarId       String
+  webinar         Webinar  @relation(fields: [webinarId], references: [id], onDelete: Cascade)
+  
+  name            String
+  email           String
+  phone           String?
+  
+  attended        Boolean  @default(false)
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([webinarId])
+}
+
+// ============================================
+// ANALYTICS & TRACKING
+// ============================================
+
+model PageView {
+  id              String   @id @default(cuid())
+  page            String
+  userId          String?
+  sessionId       String
+  
+  referrer        String?
+  utmSource       String?
+  utmMedium       String?
+  utmCampaign     String?
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([page])
+  @@index([sessionId])
+}
+
+// ============================================
+// AUDIT LOGS
+// ============================================
+
+model AuditLog {
+  id              String   @id @default(cuid())
+  userId          String
+  action          String
+  entity          String
+  entityId        String
+  changes         Json?
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([userId])
+  @@index([entity])
+}
