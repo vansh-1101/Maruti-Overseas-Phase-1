@@ -68,13 +68,13 @@ export default function BookConsultationPage() {
                         {[1, 2, 3, 4].map((s) => (
                             <div key={s} className="flex items-center flex-1">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all ${s <= step
-                                        ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white'
-                                        : 'bg-gray-200 text-gray-500'
+                                    ? 'bg-gradient-to-r from-primary to-secondary text-white'
+                                    : 'bg-muted text-muted-foreground'
                                     }`}>
                                     {s < step ? <CheckCircle className="w-6 h-6" /> : s}
                                 </div>
                                 {s < 4 && (
-                                    <div className={`flex-1 h-1 mx-2 transition-all ${s < step ? 'bg-gradient-to-r from-blue-600 to-cyan-500' : 'bg-gray-200'
+                                    <div className={`flex-1 h-1 mx-2 transition-all ${s < step ? 'bg-gradient-to-r from-primary to-secondary' : 'bg-muted'
                                         }`} />
                                 )}
                             </div>
@@ -101,8 +101,8 @@ export default function BookConsultationPage() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                        <User className="w-6 h-6 text-blue-600" />
+                                    <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                                        <User className="w-6 h-6 text-primary" />
                                         Personal Information
                                     </h2>
 
@@ -115,7 +115,7 @@ export default function BookConsultationPage() {
                                             required
                                             value={formData.name}
                                             onChange={(e) => updateFormData('name', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             placeholder="John Doe"
                                         />
                                     </div>
@@ -130,7 +130,7 @@ export default function BookConsultationPage() {
                                                 required
                                                 value={formData.email}
                                                 onChange={(e) => updateFormData('email', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                                 placeholder="john@example.com"
                                             />
                                         </div>
@@ -144,7 +144,7 @@ export default function BookConsultationPage() {
                                                 required
                                                 value={formData.phone}
                                                 onChange={(e) => updateFormData('phone', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                                 placeholder="+91 98765 43210"
                                             />
                                         </div>
@@ -159,7 +159,7 @@ export default function BookConsultationPage() {
                                             required
                                             value={formData.city}
                                             onChange={(e) => updateFormData('city', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             placeholder="Ahmedabad"
                                         />
                                     </div>
@@ -175,8 +175,8 @@ export default function BookConsultationPage() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                        <Globe className="w-6 h-6 text-blue-600" />
+                                    <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                                        <Globe className="w-6 h-6 text-primary" />
                                         Study Plans
                                     </h2>
 
@@ -188,7 +188,7 @@ export default function BookConsultationPage() {
                                             required
                                             value={formData.interestedCountry}
                                             onChange={(e) => updateFormData('interestedCountry', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                         >
                                             <option value="">Select a country</option>
                                             <option value="USA">USA</option>
@@ -210,7 +210,7 @@ export default function BookConsultationPage() {
                                                 required
                                                 value={formData.studyLevel}
                                                 onChange={(e) => updateFormData('studyLevel', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             >
                                                 <option value="">Select level</option>
                                                 <option value="Bachelors">Bachelors</option>
@@ -228,7 +228,7 @@ export default function BookConsultationPage() {
                                                 required
                                                 value={formData.intakeYear}
                                                 onChange={(e) => updateFormData('intakeYear', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             >
                                                 <option value="">Select year</option>
                                                 <option value="2024">2024</option>
@@ -249,8 +249,8 @@ export default function BookConsultationPage() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                        <GraduationCap className="w-6 h-6 text-blue-600" />
+                                    <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                                        <GraduationCap className="w-6 h-6 text-primary" />
                                         Academic Background
                                     </h2>
 
@@ -262,7 +262,7 @@ export default function BookConsultationPage() {
                                             required
                                             value={formData.qualification}
                                             onChange={(e) => updateFormData('qualification', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                         >
                                             <option value="">Select qualification</option>
                                             <option value="12th">12th Grade</option>
@@ -281,7 +281,7 @@ export default function BookConsultationPage() {
                                                 required
                                                 value={formData.cgpa}
                                                 onChange={(e) => updateFormData('cgpa', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                                 placeholder="8.5 or 85%"
                                             />
                                         </div>
@@ -293,7 +293,7 @@ export default function BookConsultationPage() {
                                             <select
                                                 value={formData.englishTest}
                                                 onChange={(e) => updateFormData('englishTest', e.target.value)}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                                className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             >
                                                 <option value="">Not taken yet</option>
                                                 <option value="IELTS">IELTS</option>
@@ -315,8 +315,8 @@ export default function BookConsultationPage() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                        <CheckCircle className="w-6 h-6 text-blue-600" />
+                                    <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+                                        <CheckCircle className="w-6 h-6 text-primary" />
                                         Almost Done!
                                     </h2>
 
@@ -328,7 +328,7 @@ export default function BookConsultationPage() {
                                             required
                                             value={formData.budget}
                                             onChange={(e) => updateFormData('budget', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                         >
                                             <option value="">Select budget range</option>
                                             <option value="<10L">Less than ₹10 Lakhs</option>
@@ -346,14 +346,14 @@ export default function BookConsultationPage() {
                                             rows={4}
                                             value={formData.message}
                                             onChange={(e) => updateFormData('message', e.target.value)}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
+                                            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-primary focus:outline-none bg-input/50"
                                             placeholder="Tell us about your study abroad goals..."
                                         />
                                     </div>
 
-                                    <div className="bg-blue-50 rounded-xl p-6">
-                                        <h3 className="font-semibold text-gray-900 mb-3">What happens next?</h3>
-                                        <ul className="space-y-2 text-sm text-gray-600">
+                                    <div className="bg-secondary/10 rounded-xl p-6">
+                                        <h3 className="font-semibold text-foreground mb-3">What happens next?</h3>
+                                        <ul className="space-y-2 text-sm text-muted-foreground">
                                             <li className="flex items-start gap-2">
                                                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                                                 <span>Our counselor will contact you within 24 hours</span>
@@ -380,8 +380,8 @@ export default function BookConsultationPage() {
                             onClick={handlePrev}
                             disabled={step === 1}
                             className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all ${step === 1
-                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                                 }`}
                         >
                             <ArrowLeft className="w-5 h-5" />
@@ -392,7 +392,7 @@ export default function BookConsultationPage() {
                             <button
                                 type="button"
                                 onClick={handleNext}
-                                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
+                                className="flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all"
                             >
                                 Next
                                 <ArrowRight className="w-5 h-5" />

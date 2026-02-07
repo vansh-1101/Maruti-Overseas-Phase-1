@@ -50,8 +50,15 @@ const config: Config = {
                 sm: "calc(var(--radius) - 4px)",
             },
             fontFamily: {
-                sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-                heading: ["var(--font-poppins)", "system-ui", "sans-serif"],
+                sans: ["var(--font-outfit)", "var(--font-inter)", "system-ui", "sans-serif"],
+                heading: ["var(--font-playfair)", "var(--font-poppins)", "serif"],
+            },
+            container: {
+                center: true,
+                padding: "2rem",
+                screens: {
+                    "2xl": "1400px",
+                },
             },
         },
     },

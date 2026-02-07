@@ -12,7 +12,7 @@ export default function Header() {
         { name: 'Home', href: '/' },
         {
             name: 'Countries',
-            href: '/countries/usa',
+            href: '/countries',
             dropdown: [
                 { name: 'USA', href: '/countries/usa' },
                 { name: 'UK', href: '/countries/uk' },
@@ -25,7 +25,7 @@ export default function Header() {
         },
         {
             name: 'Courses',
-            href: '/courses/computer-science',
+            href: '/courses',
             dropdown: [
                 { name: 'Computer Science', href: '/courses/computer-science' },
                 { name: 'Business', href: '/courses/business' },
@@ -74,23 +74,26 @@ export default function Header() {
     ];
 
     return (
-        <header className="bg-white shadow-md sticky top-0 z-50">
+        <header className="bg-background shadow-md sticky top-0 z-50">
             {/* Top Bar */}
-            <div className="bg-blue-900 text-white py-2">
+            <div className="bg-foreground text-primary-foreground py-2">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center text-sm">
                         <div className="flex gap-6">
-                            <a href="tel:+917940030637" className="flex items-center gap-2 hover:text-cyan-300">
+                            <a href="tel:+917940030637" className="flex items-center gap-2 hover:text-secondary transition-colors">
                                 <Phone className="w-4 h-4" />
                                 +91-79-40030637
                             </a>
-                            <a href="mailto:visnagar.moc@gmail.com" className="hidden md:flex items-center gap-2 hover:text-cyan-300">
+                            <a href="mailto:visnagar.moc@gmail.com" className="hidden md:flex items-center gap-2 hover:text-secondary transition-colors">
                                 <Mail className="w-4 h-4" />
                                 visnagar.moc@gmail.com
                             </a>
                         </div>
                         <div className="flex gap-4">
-                            <Link href="/book-consultation" className="hover:text-cyan-300">
+                            <Link href="/countries" className="hidden sm:block hover:text-secondary transition-colors">
+                                Explore Countries
+                            </Link>
+                            <Link href="/book-consultation" className="hover:text-secondary transition-colors">
                                 Book Free Consultation
                             </Link>
                         </div>
@@ -102,13 +105,13 @@ export default function Header() {
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
                             <GraduationCap className="w-7 h-7 text-white" />
                         </div>
                         <div>
-                            <div className="text-xl font-bold text-gray-900">Maruti Overseas</div>
-                            <div className="text-xs text-gray-600">Consultancy Since 2004</div>
+                            <div className="text-xl font-bold text-foreground font-heading">Maruti Overseas</div>
+                            <div className="text-xs text-muted-foreground">Consultancy Since 2004</div>
                         </div>
                     </Link>
 
@@ -120,19 +123,19 @@ export default function Header() {
                                     <>
                                         <Link
                                             href={item.href}
-                                            className="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-1"
+                                            className="text-foreground/80 hover:text-primary font-medium transition-colors flex items-center gap-1"
                                         >
                                             {item.name}
                                             <ChevronDown className="w-4 h-4" />
                                         </Link>
                                         {/* Dropdown Menu */}
-                                        <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                        <div className="absolute left-0 mt-2 w-56 bg-background rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-border">
                                             <div className="py-2">
                                                 {item.dropdown.map((subItem) => (
                                                     <Link
                                                         key={subItem.name}
                                                         href={subItem.href}
-                                                        className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                                        className="block px-4 py-2 text-foreground/80 hover:bg-muted hover:text-primary transition-colors"
                                                     >
                                                         {subItem.name}
                                                     </Link>
@@ -143,7 +146,7 @@ export default function Header() {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                                        className="text-foreground/80 hover:text-primary font-medium transition-colors"
                                     >
                                         {item.name}
                                     </Link>
@@ -152,7 +155,7 @@ export default function Header() {
                         ))}
                         <Link
                             href="/book-consultation"
-                            className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all"
+                            className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all hover:scale-105"
                         >
                             Get Started
                         </Link>
@@ -164,9 +167,9 @@ export default function Header() {
                         className="lg:hidden p-2"
                     >
                         {mobileMenuOpen ? (
-                            <X className="w-6 h-6 text-gray-900" />
+                            <X className="w-6 h-6 text-foreground" />
                         ) : (
-                            <Menu className="w-6 h-6 text-gray-900" />
+                            <Menu className="w-6 h-6 text-foreground" />
                         )}
                     </button>
                 </div>
@@ -178,20 +181,31 @@ export default function Header() {
                             <div key={item.name}>
                                 {item.dropdown ? (
                                     <>
-                                        <button
-                                            onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                                            className="w-full flex items-center justify-between py-2 text-gray-700 hover:text-blue-600 font-medium"
-                                        >
-                                            {item.name}
-                                            <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
-                                        </button>
+                                        <div className="w-full flex items-center justify-between">
+                                            <Link
+                                                href={item.href}
+                                                className="flex-1 py-2 text-foreground/80 hover:text-primary font-medium"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setOpenDropdown(openDropdown === item.name ? null : item.name);
+                                                }}
+                                                className="p-2"
+                                            >
+                                                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                                            </button>
+                                        </div>
                                         {openDropdown === item.name && (
-                                            <div className="pl-4 space-y-2">
+                                            <div className="pl-4 space-y-2 border-l-2 border-muted ml-2">
                                                 {item.dropdown.map((subItem) => (
                                                     <Link
                                                         key={subItem.name}
                                                         href={subItem.href}
-                                                        className="block py-2 text-gray-600 hover:text-blue-600"
+                                                        className="block py-2 text-muted-foreground hover:text-primary"
                                                         onClick={() => setMobileMenuOpen(false)}
                                                     >
                                                         {subItem.name}
@@ -203,7 +217,7 @@ export default function Header() {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className="block py-2 text-gray-700 hover:text-blue-600 font-medium"
+                                        className="block py-2 text-foreground/80 hover:text-primary font-medium"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         {item.name}
@@ -213,7 +227,7 @@ export default function Header() {
                         ))}
                         <Link
                             href="/book-consultation"
-                            className="block bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full text-center mt-4"
+                            className="block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full text-center mt-4 shadow-md"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Get Started

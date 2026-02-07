@@ -30,27 +30,27 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-foreground text-primary-foreground">
             <div className="container mx-auto px-4 py-12">
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Company Info */}
                     <div>
-                        <h3 className="text-xl font-bold mb-4">Maruti Overseas Consultancy</h3>
-                        <p className="text-gray-400 mb-4">
+                        <h3 className="text-xl font-bold mb-4 font-heading">Maruti Overseas Consultancy</h3>
+                        <p className="text-muted-foreground mb-4">
                             Your trusted partner for visa consultancy and study abroad services since 2004.
                             Helping students achieve their global education dreams.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <a href="#" className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-primary hover:text-white">
                                 <Facebook className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
+                            <a href="#" className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-primary hover:text-white">
                                 <Instagram className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <a href="#" className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-primary hover:text-white">
                                 <Twitter className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors">
+                            <a href="#" className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-primary hover:text-white">
                                 <Linkedin className="w-5 h-5" />
                             </a>
                         </div>
@@ -58,11 +58,11 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+                        <h3 className="text-lg font-bold mb-4 font-heading">Quick Links</h3>
                         <ul className="space-y-2">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                                    <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -72,11 +72,11 @@ export default function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h3 className="text-lg font-bold mb-4">Our Services</h3>
+                        <h3 className="text-lg font-bold mb-4 font-heading">Our Services</h3>
                         <ul className="space-y-2">
                             {services.map((service) => (
                                 <li key={service.name}>
-                                    <Link href={service.href} className="text-gray-400 hover:text-white transition-colors">
+                                    <Link href={service.href} className="text-muted-foreground hover:text-primary transition-colors">
                                         {service.name}
                                     </Link>
                                 </li>
@@ -86,31 +86,31 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-                        <div className="space-y-3 text-gray-400">
+                        <h3 className="text-lg font-bold mb-4 font-heading">Contact Us</h3>
+                        <div className="space-y-3 text-muted-foreground">
                             <div className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                                <MapPin className="w-5 h-5 mt-1 flex-shrink-0 text-primary" />
                                 <div>
-                                    <p className="font-semibold text-white">Head Office - Visnagar</p>
+                                    <p className="font-semibold text-primary-foreground">Head Office - Visnagar</p>
                                     <p className="text-sm">Visnagar, Gujarat, India</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                                <MapPin className="w-5 h-5 mt-1 flex-shrink-0 text-primary" />
                                 <div>
-                                    <p className="font-semibold text-white">Branch - Ahmedabad</p>
+                                    <p className="font-semibold text-primary-foreground">Branch - Ahmedabad</p>
                                     <p className="text-sm">Ahmedabad, Gujarat, India</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <Phone className="w-5 h-5" />
-                                <a href="tel:+917940030637" className="hover:text-white">
+                                <Phone className="w-5 h-5 text-primary" />
+                                <a href="tel:+917940030637" className="hover:text-primary transition-colors">
                                     +91-79-40030637
                                 </a>
                             </div>
                             <div className="flex items-center gap-3">
-                                <Mail className="w-5 h-5" />
-                                <a href="mailto:visnagar.moc@gmail.com" className="hover:text-white">
+                                <Mail className="w-5 h-5 text-primary" />
+                                <a href="mailto:visnagar.moc@gmail.com" className="hover:text-primary transition-colors">
                                     visnagar.moc@gmail.com
                                 </a>
                             </div>
@@ -119,7 +119,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <div className="border-t border-border/10 mt-8 pt-8 text-center text-muted-foreground">
                     <p>&copy; {new Date().getFullYear()} Maruti Overseas Consultancy. All rights reserved.</p>
                     <p className="text-sm mt-2">Designed with ❤️ for your success</p>
                 </div>
